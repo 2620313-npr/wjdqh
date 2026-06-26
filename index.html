@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>20313우승연 | 유니코드 비밀편지</title>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app-wrapper">
+  <div class="container">
+    <header>
+      <div class="logo-icon"><i class="fa-solid fa-user-shield"></i></div>
+      <h1>20313우승연 <span class="accent">|</span> 유니코드 비밀편지</h1>
+      <p class="subtitle">눈에 보이지 않는 텍스트 보안 기술, 스테가노그래피</p>
+    </header>
+    
+    <div class="tabs">
+      <button id="btn-encode" class="tab-btn active" onclick="switchTab('encode')">
+        <i class="fa-solid fa-lock"></i> 암호 만들기
+      </button>
+      <button id="btn-decode" class="tab-btn" onclick="switchTab('decode')">
+        <i class="fa-solid fa-lock-open"></i> 암호 풀기
+      </button>
+    </div>
+
+    <div id="encode-tab" class="tab-content active">
+      <div class="input-area">
+        <div class="input-group">
+          <label><i class="fa-solid fa-comment"></i> 평범한 글</label>
+          <input type="text" id="public-input" placeholder="보여져도 상관 없는 문장 입력">
+        </div>
+        <div class="input-group">
+          <label><i class="fa-solid fa-key"></i> 숨길 비밀 글</label>
+          <textarea id="secret-input" placeholder="이 안에 숨겨질 비밀 내용을 적으세요"></textarea>
+        </div>
+        <button class="action-btn encode" onclick="processEncode()">
+          비밀 데이터 삽입 <i class="fa-solid fa-wand-magic-sparkles"></i>
+        </button>
+      </div>
+      
+      <div class="result-box-wrapper" id="encode-result-container">
+        <div class="result-header">
+          <span>완성된 암호문</span>
+          <span class="copy-badge">클릭 시 복사</span>
+        </div>
+        <div class="result-text" id="encode-result" onclick="copyResult()"></div>
+      </div>
+    </div>
+
+    <div id="decode-tab" class="tab-content">
+      <div class="input-area">
+        <div class="input-group">
+          <label><i class="fa-solid fa-file-import"></i> 분석할 문장</label>
+          <input type="text" id="cipher-input" placeholder="암호가 숨겨진 문장을 붙여넣으세요">
+        </div>
+        <button class="action-btn decode" onclick="processDecode()">
+          비밀 데이터 추출 <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </div>
+      
+      <div class="result-box-wrapper" id="decode-result-container">
+        <div class="result-header">분석 결과</div>
+        <div class="result-text secret-found" id="decode-result"></div>
+      </div>
+    </div>
+    
+    <footer>
+      Digital Forensic & Steganography Library v1.0
+    </footer>
+  </div>
+</div>
+
+  <script src="script.js"></script>
+</body>
+</html>
